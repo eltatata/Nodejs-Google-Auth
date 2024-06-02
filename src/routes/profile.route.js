@@ -1,11 +1,10 @@
 import express from "express";
 
+import { verifyAuth } from "../middlewares/auth.middleware.js";
+import { getProfile } from "../controllers/profile.controller.js";
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    if (!req.isAuthenticated()) return res.redirect("/auth/google");
-
-    return res.render("profile", req.user);
-});
+router.get('/', verifyAuth, getProfile);
 
 export default router;

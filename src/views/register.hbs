@@ -1,0 +1,24 @@
+<div class="flex flex-col justify-center space-y-6 border rounded-md p-10 mx-auto mt-32 w-[400px]">
+    <div class="flex flex-col space-y-2 text-center">
+        <h1 class="text-2xl font-semibold tracking-tight">
+            Create an account
+        </h1>
+        <p class="text-sm text-muted-foreground">
+            Enter your email below to create your account
+        </p>
+    </div>
+    <div class="grid gap-6">
+        {{> Form}}
+        <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+                <span class="w-full border-t" />
+            </div>
+            <div class="relative flex justify-center text-xs uppercase">
+                <span class="bg-white px-2 text-muted-foreground">
+                    Or continue with
+                </span>
+            </div>
+        </div>
+        {{> GoogleButton}}
+    </div>
+</div>

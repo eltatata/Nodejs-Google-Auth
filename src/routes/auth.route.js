@@ -1,22 +1,16 @@
 import express from "express";
-import passport from 'passport'
+
+import { googleAuth, googleAuthCallback } from "../middlewares/auth.middleware.js";
+import { googleCallback, logout, register, registerForm } from "../controllers/auth.controller.js";
 
 const router = express.Router();
 
-router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
-    (req, res) => {
-        res.redirect('/profile');
-    }
-);
+router.get("/register", registerForm);
+router.post("/register", register)
 
-router.get('/logout', (req, res) => {
-    req.logout((err) => {
-        if (err) {
-            return res.status(500).json({ message: 'Error al cerrar sesión.' });
-        }
-        res.redirect('/');
-    });
-});
+router.get('/google', googleAuth);
+router.get('/google/callback', googleAuthCallback, googleCallback);
+
+router.get('/logout', logout);
 
 export default router;

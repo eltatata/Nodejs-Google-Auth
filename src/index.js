@@ -1,9 +1,10 @@
 import "dotenv/config";
+import "./utils/auth.handler.js";
+
 import express from 'express';
 import passport from 'passport';
 import session from 'express-session';
 import { create } from "express-handlebars";
-import "./utils/auth.js";
 
 import authRouter from "./routes/auth.route.js";
 import profileRouter from "./routes/profile.route.js";
@@ -23,6 +24,8 @@ app.set("views", "./src/views");
 app.use(session({ secret: 'tu_secreto', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/auth", authRouter);
 app.use("/profile", profileRouter);
