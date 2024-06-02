@@ -14,7 +14,10 @@ const PORT = 3000;
 
 const hbs = create({
   extname: ".hbs",
-  partialsDir: ["./src/views/components"]
+  partialsDir: ["./src/views/components"],
+  helpers: {
+    eq: function (a, b) { return a === b; }
+  }
 });
 
 app.engine(".hbs", hbs.engine);

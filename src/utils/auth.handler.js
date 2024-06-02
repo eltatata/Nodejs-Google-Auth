@@ -2,7 +2,11 @@ import passport from 'passport';
 
 import { prisma } from '../database/db.js';
 
+import { verified } from './password.handler.js';
+
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
+import { Strategy as LocalStrategy } from 'passport-local';
+
 import { createUserGoogle } from '../services/auth.js';
 
 passport.use(new GoogleStrategy({
@@ -25,6 +29,23 @@ passport.use(new GoogleStrategy({
         }
     }
 ));
+
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+}, async (email, password, done) => {
+    try {
+        const user = await prisma.user.findUnique({ where: { email } });
+        if (!user) return done(null, false, { message: 'Usuario no encontrado.' });
+
+        const isCorrect = await verified(password, user.password);
+        if (!isCorrect) return done(null, false, { message: 'Contraseña incorrecta.' });
+
+        done(null, user);
+    } catch (error) {
+        done(error);
+    }
+}));
 
 passport.serializeUser((user, done) => {
     done(null, user.id);

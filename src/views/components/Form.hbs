@@ -1,3 +1,4 @@
+{{#if (eq formType 'register')}}
 <form action="/auth/register" method="post">
     <div class="grid gap-2">
         <Input name="email" class="py-2 px-4 border rounded-md" placeholder="name@example.com" type="email" />
@@ -7,3 +8,14 @@
         </button>
     </div>
 </form>
+{{else if (eq formType 'login')}}
+<form action="/auth/login" method="post">
+    <div class="grid gap-2">
+        <Input name="email" class="py-2 px-4 border rounded-md" placeholder="name@example.com" type="email" />
+        <Input name="password" class="py-2 px-4 border rounded-md" placeholder="Enter your password" type="password" />
+        <button class="py-1 bg-neutral-800 text-white rounded-md hover:bg-neutral-700 transition-all duration-300">
+            Login
+        </button>
+    </div>
+</form>
+{{/if}}
