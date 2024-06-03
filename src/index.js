@@ -34,6 +34,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.static('./src/public'));
+
 app.use("/auth", authRouter);
 app.use("/profile", profileRouter);
 

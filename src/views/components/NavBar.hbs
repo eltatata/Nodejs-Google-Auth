@@ -1,8 +1,9 @@
 <nav>
-    <ul class="flex justify-end gap-4 py-5 px-32 border-b-2 border-slate-400">
+    <ul class="flex justify-end gap-4 py-5 px-32 border">
         <li><a class="hover:underline font-semibold" href="/">Home</a></li>
         {{#if user}}
             <li><a class="hover:underline font-semibold" href="/profile">Profile</a></li>
+            <li><a class="hover:underline font-semibold" href="/profile/settings">Settings</a></li>
         {{else}}
             <li><a class="hover:underline font-semibold" href="/auth/login">Sign In</a></li>
             <li><a class="hover:underline font-semibold" href="/auth/register">Sign Up</a></li>

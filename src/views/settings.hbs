@@ -1,0 +1,47 @@
+<div class="max-w-2xl mx-auto flex flex-col gap-6 p-10">
+    <div>
+        <h3 class="text-2xl font-medium">Profile</h3>
+        <p class="text-sm text-muted-foreground">
+            This is how others will see you on the site.
+        </p>
+    </div>
+    <div class="relative">
+        <div class="absolute inset-0 flex items-center">
+            <span class="w-full border-t"></span>
+        </div>
+    </div>
+    <form class="space-y-8">
+        <div class="mb-4">
+            <label for="image" class="block text-gray-700 font-semibold mb-2">Upload image profile</label>
+            <input type="file" id="image" name="image" class="py-2 px-4 border rounded-md"
+                onchange="previewImage(event)">
+            <div class="pt-2">
+                {{> ImageProfile}}
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="username" class="block text-gray-700 font-semibold mb-2">Username</label>
+            <input name="username" id="username" class="w-full py-2 px-4 border rounded-md"
+                placeholder="Enter your username" type="text" />
+        </div>
+        <div class="mb-4">
+            <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+            <input name="email" id="email" class="w-full py-2 px-4 border rounded-md" placeholder="name@example.com"
+                type="email" />
+        </div>
+        <button class="py-1 px-4 bg-neutral-800 text-white rounded-md hover:bg-neutral-700 transition-all duration-300">
+            Update profile
+        </button>
+    </form>
+</div>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('img-profile');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>

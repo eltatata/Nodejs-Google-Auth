@@ -1,9 +1,31 @@
 <div class="flex flex-col items-center gap-5 pt-10">
     <h1 class="text-3xl font-bold">Your Profile</h1>
-    <div class="flex flex-col items-center gap-3">
-        <img class="rounded-full" src="{{image}}" alt="image profile">
-        <h3 class="text-xl font-semibold">{{name}}</h3>
-        <p class="text-slate-600">{{email}}</p>
-        <a class="border border-slate-500 rounded-lg px-2 py-1 hover:underline" href="/auth/logout">Logout</a>
+    <div class="flex items-center border rounded-md gap-5 p-8">
+        {{> ImageProfile}}
+        <div class="flex flex-col items-start px-5">
+            {{#if name}}
+            <h3 class="text-xl font-semibold">{{name}}</h3>
+            {{else}}
+            <h3 class="text-xl font-semibold">No username</h3>
+            {{/if}}
+            <p class="text-slate-600">{{email}}</p>
+            <div class="flex gap-4 mt-4">
+                <a class="w-full border flex items-center justify-center rounded-lg px-2 py-1 hover:underline hover:bg-gray-200 transition-all duration-300"
+                    href="/profile/settings">
+                    <svg class="h-4 w-4 mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-settings">
+                        <path
+                            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    Settings
+                </a>
+                <a class="w-full border rounded-lg px-2 py-1 hover:underline hover:bg-gray-200 transition-all duration-300"
+                    href="/auth/logout">
+                    Logout
+                </a>
+            </div>
+        </div>
     </div>
 </div>
