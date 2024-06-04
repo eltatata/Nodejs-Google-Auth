@@ -4,3 +4,6 @@ node_modules
 migrations
 dev.db
 dev.db-journal
+
+/src/public/storage/*
+!/src/public/storage/
